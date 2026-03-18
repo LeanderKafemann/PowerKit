@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PowerKit – Modern Web Styling Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="powerkit.css" />
+  <style>
+    /* Demo-page specific helpers */
+    .demo-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+    .swatch     { height: 80px; border-radius: var(--pk-radius-md); }
+    .demo-section { padding: 3rem 0; }
+    .demo-section + .demo-section { border-top: 1px solid var(--pk-border); }
+    .section-title { font-size: var(--pk-text-2xl); font-weight: var(--pk-font-bold); margin-bottom: 0.25rem; }
+    .section-sub   { color: var(--pk-text-secondary); margin-bottom: 2rem; font-size: var(--pk-text-sm); }
+    .demo-row      { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1rem; }
+    .demo-row:last-child { margin-bottom: 0; }
+
+    /* Sidebar sticky layout */
+    .docs-layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+    .docs-sidebar { position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; padding: 1.5rem 0; border-right: 1px solid var(--pk-border); background: var(--pk-bg-muted); }
+    .docs-content { padding: 2rem 3rem; max-width: 900px; }
+
+    @media (max-width: 767px) {
+      .docs-layout { grid-template-columns: 1fr; }
+      .docs-sidebar { display: none; }
+      .docs-content { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================
+       NAVBAR
+  ======================================================= -->
+  <nav class="pk-navbar">
+    <a class="pk-navbar-brand" href="#">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="28" height="28" rx="8" fill="url(#brand-grad)"/>
+        <path d="M8 20V8h5.5a4.5 4.5 0 010 9H8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15 17l5 3" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="brand-grad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#f43f5e"/>
+            <stop offset="1" stop-color="#be123c"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      PowerKit
+    </a>
+
+    <ul class="pk-navbar-nav pk-md\:flex pk-hidden" id="main-nav">
+      <li><a href="#typography" class="pk-nav-link">Typography</a></li>
+      <li><a href="#buttons"    class="pk-nav-link">Buttons</a></li>
+      <li><a href="#forms"      class="pk-nav-link">Forms</a></li>
+      <li><a href="#components" class="pk-nav-link">Components</a></li>
+    </ul>
+
+    <div class="pk-cluster">
+      <button class="pk-btn pk-btn-ghost-gray pk-btn-icon pk-tooltip" data-theme-toggle data-tip="Toggle dark mode" aria-label="Toggle dark mode">
+        <!-- Sun / Moon icon -->
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10A5 5 0 0012 7z"/></svg>
+      </button>
+      <button class="pk-btn pk-btn-outline pk-btn-sm pk-md\:hidden" data-navbar-toggle="#main-nav">☰ Menu</button>
+      <a href="https://github.com/LeanderKafemann/PowerKit-" target="_blank" rel="noopener noreferrer" class="pk-btn pk-btn-primary pk-btn-sm">
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+       HERO
+  ======================================================= -->
+  <section class="pk-hero pk-hero-rose">
+    <div class="pk-container">
+      <span class="pk-eyebrow pk-mb-3 pk-block">Introducing PowerKit</span>
+      <h1 class="pk-hero-title">
+        A Modern
+        <span class="pk-text-gradient-rose"> Web Styling Kit</span><br/>
+        for Every Project
+      </h1>
+      <p class="pk-hero-sub">
+        Intuitive CSS utilities, beautiful components, and a warm rose palette — designed to plug seamlessly into any website.
+      </p>
+      <div class="pk-hero-actions">
+        <a href="#buttons" class="pk-btn pk-btn-gradient pk-btn-lg pk-btn-pill">
+          Explore Components
+        </a>
+        <a href="https://github.com/LeanderKafemann/PowerKit-" target="_blank" rel="noopener noreferrer" class="pk-btn pk-btn-outline pk-btn-lg pk-btn-pill">
+          View on GitHub
+        </a>
+      </div>
+      <!-- Feature chips -->
+      <div class="pk-cluster pk-justify-center pk-mt-8">
+        <span class="pk-badge pk-badge-primary">🎨 Rose Palette</span>
+        <span class="pk-badge pk-badge-gray">📱 Responsive</span>
+        <span class="pk-badge pk-badge-success">🌙 Dark Mode</span>
+        <span class="pk-badge pk-badge-info">⚡ Zero Dependencies</span>
+        <span class="pk-badge pk-badge-accent">♿ Accessible</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       QUICK START
+  ======================================================= -->
+  <section class="pk-section pk-bg-muted" id="quickstart">
+    <div class="pk-container">
+      <h2 class="section-title">Quick Start</h2>
+      <p class="section-sub">Drop in two files and you're ready to go.</p>
+      <pre class="pk-pre"><code>&lt;!-- 1. Link the stylesheet --&gt;
+&lt;link rel="stylesheet" href="powerkit.css" /&gt;
+
+&lt;!-- 2. Add the script before &lt;/body&gt; --&gt;
+&lt;script src="powerkit.js"&gt;&lt;/script&gt;</code></pre>
+
+      <p class="pk-text-sm pk-text-muted pk-mt-4">
+        That's it. Every component on this page is built exclusively with
+        <code>powerkit.css</code> and <code>powerkit.js</code>.
+      </p>
+    </div>
+  </section>
+
+  <div class="docs-layout">
+
+    <!-- ======================================================
+         SIDEBAR
+    ======================================================= -->
+    <aside class="docs-sidebar">
+      <nav class="pk-sidenav">
+        <span class="pk-sidenav-title">Foundations</span>
+        <a href="#colors"     class="pk-sidenav-item">🎨 Colors</a>
+        <a href="#typography" class="pk-sidenav-item">🔤 Typography</a>
+        <a href="#spacing"    class="pk-sidenav-item">📐 Spacing & Layout</a>
+
+        <span class="pk-sidenav-title">Components</span>
+        <a href="#buttons"    class="pk-sidenav-item">⚡ Buttons</a>
+        <a href="#forms"      class="pk-sidenav-item">📋 Forms</a>
+        <a href="#cards"      class="pk-sidenav-item">🃏 Cards</a>
+        <a href="#badges"     class="pk-sidenav-item">🏷️ Badges &amp; Tags</a>
+        <a href="#alerts"     class="pk-sidenav-item">🔔 Alerts</a>
+        <a href="#navigation" class="pk-sidenav-item">🧭 Navigation</a>
+        <a href="#modals"     class="pk-sidenav-item">🪟 Modals</a>
+        <a href="#dropdown"   class="pk-sidenav-item">📂 Dropdowns</a>
+        <a href="#tabs"       class="pk-sidenav-item">📑 Tabs</a>
+        <a href="#accordion"  class="pk-sidenav-item">📦 Accordion</a>
+        <a href="#tables"     class="pk-sidenav-item">📊 Tables</a>
+        <a href="#progress"   class="pk-sidenav-item">⏳ Progress &amp; Loaders</a>
+        <a href="#avatars"    class="pk-sidenav-item">👤 Avatars</a>
+        <a href="#toasts"     class="pk-sidenav-item">💬 Toasts</a>
+        <a href="#misc"       class="pk-sidenav-item">✨ Misc</a>
+      </nav>
+    </aside>
+
+    <!-- ======================================================
+         MAIN CONTENT
+    ======================================================= -->
+    <main class="docs-content">
+
+      <!-- COLORS -->
+      <section class="demo-section" id="colors">
+        <h2 class="section-title">Colors</h2>
+        <p class="section-sub">PowerKit uses a warm rose primary palette with full semantic color support.</p>
+
+        <h3 class="pk-text-lg pk-font-semibold pk-mb-3">Primary (Rose)</h3>
+        <div class="demo-grid pk-mb-8">
+          <div><div class="swatch" style="background:var(--pk-primary-50)"></div><p class="pk-xs pk-muted pk-mt-1">50</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-100)"></div><p class="pk-xs pk-muted pk-mt-1">100</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-200)"></div><p class="pk-xs pk-muted pk-mt-1">200</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-300)"></div><p class="pk-xs pk-muted pk-mt-1">300</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-400)"></div><p class="pk-xs pk-muted pk-mt-1">400</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-500)"></div><p class="pk-xs pk-muted pk-mt-1">500 ★</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-600)"></div><p class="pk-xs pk-muted pk-mt-1">600</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-700)"></div><p class="pk-xs pk-muted pk-mt-1">700</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-800)"></div><p class="pk-xs pk-muted pk-mt-1">800</p></div>
+          <div><div class="swatch" style="background:var(--pk-primary-900)"></div><p class="pk-xs pk-muted pk-mt-1">900</p></div>
+        </div>
+
+        <h3 class="pk-text-lg pk-font-semibold pk-mb-3">Semantic</h3>
+        <div class="demo-grid">
+          <div><div class="swatch" style="background:var(--pk-success)"></div><p class="pk-xs pk-muted pk-mt-1">Success</p></div>
+          <div><div class="swatch" style="background:var(--pk-warning)"></div><p class="pk-xs pk-muted pk-mt-1">Warning</p></div>
+          <div><div class="swatch" style="background:var(--pk-error)"></div><p class="pk-xs pk-muted pk-mt-1">Error</p></div>
+          <div><div class="swatch" style="background:var(--pk-info)"></div><p class="pk-xs pk-muted pk-mt-1">Info</p></div>
+          <div><div class="swatch pk-bg-gradient-rose"></div><p class="pk-xs pk-muted pk-mt-1">Gradient Rose</p></div>
+          <div><div class="swatch pk-bg-gradient-warm"></div><p class="pk-xs pk-muted pk-mt-1">Gradient Warm</p></div>
+        </div>
+      </section>
+
+      <!-- TYPOGRAPHY -->
+      <section class="demo-section" id="typography">
+        <h2 class="section-title">Typography</h2>
+        <p class="section-sub">Scale, weight, and style utilities for all text needs.</p>
+
+        <div class="pk-stack-sm pk-mb-6">
+          <p class="pk-display pk-text-gradient-rose">Display Heading</p>
+          <h1>Heading One</h1>
+          <h2>Heading Two</h2>
+          <h3>Heading Three</h3>
+          <h4>Heading Four</h4>
+          <h5>Heading Five</h5>
+          <h6>Heading Six</h6>
+        </div>
+
+        <div class="pk-stack pk-mb-6">
+          <span class="pk-eyebrow">Eyebrow Label</span>
+          <p class="pk-lead">Lead paragraph — slightly larger and muted, used to introduce sections.</p>
+          <p>Body text — the default reading size. PowerKit uses <code>Inter</code> with comfortable line heights for readability across all devices.</p>
+          <p class="pk-small pk-muted">Small / muted text for captions and supplementary information.</p>
+        </div>
+
+        <div class="demo-row">
+          <mark>Highlighted text</mark>
+          <kbd>Ctrl</kbd> + <kbd>K</kbd>
+          <code>inline code</code>
+          <del>Strikethrough</del>
+          <em>Italic</em>
+          <strong>Bold</strong>
+        </div>
+
+        <blockquote>
+          "Design is not just what it looks like and feels like. Design is how it works." — Steve Jobs
+        </blockquote>
+
+        <pre class="pk-pre"><code>/* PowerKit CSS variable example */
+.my-component {
+  color: var(--pk-primary-600);
+  padding: var(--pk-space-4);
+  border-radius: var(--pk-radius-md);
+}</code></pre>
+      </section>
+
+      <!-- SPACING & LAYOUT -->
+      <section class="demo-section" id="spacing">
+        <h2 class="section-title">Spacing &amp; Layout</h2>
+        <p class="section-sub">Responsive grid, flex utilities, and spacing tokens.</p>
+
+        <h3 class="pk-text-lg pk-font-semibold pk-mb-3">Auto Grid</h3>
+        <div class="pk-auto-grid pk-gap-4 pk-mb-8">
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted">Card 1</div>
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted">Card 2</div>
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted">Card 3</div>
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted">Card 4</div>
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted">Card 5</div>
+        </div>
+
+        <h3 class="pk-text-lg pk-font-semibold pk-mb-3">Explicit Grid (3 columns)</h3>
+        <div class="pk-grid pk-grid-cols-3 pk-gap-4 pk-mb-8">
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted pk-col-span-2">Span 2</div>
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted">Span 1</div>
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted">Span 1</div>
+          <div class="pk-card pk-card-flat pk-p-4 pk-text-center pk-text-sm pk-muted pk-col-span-2">Span 2</div>
+        </div>
+
+        <h3 class="pk-text-lg pk-font-semibold pk-mb-3">Flex Cluster</h3>
+        <div class="pk-cluster">
+          <span class="pk-badge pk-badge-primary">React</span>
+          <span class="pk-badge pk-badge-gray">TypeScript</span>
+          <span class="pk-badge pk-badge-info">Node.js</span>
+          <span class="pk-badge pk-badge-success">Docker</span>
+          <span class="pk-badge pk-badge-warning">AWS</span>
+          <span class="pk-badge pk-badge-error">Kubernetes</span>
+        </div>
+      </section>
+
+      <!-- BUTTONS -->
+      <section class="demo-section" id="buttons">
+        <h2 class="section-title">Buttons</h2>
+        <p class="section-sub">Solid, outlined, ghost, soft, and gradient variants with multiple sizes and shapes.</p>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Solid Variants</h3>
+        <div class="demo-row">
+          <button class="pk-btn pk-btn-primary">Primary</button>
+          <button class="pk-btn pk-btn-secondary">Secondary</button>
+          <button class="pk-btn pk-btn-accent">Accent</button>
+          <button class="pk-btn pk-btn-success">Success</button>
+          <button class="pk-btn pk-btn-warning">Warning</button>
+          <button class="pk-btn pk-btn-danger">Danger</button>
+          <button class="pk-btn pk-btn-gradient">Gradient</button>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-6">Outlined Variants</h3>
+        <div class="demo-row">
+          <button class="pk-btn pk-btn-outline">Outline Primary</button>
+          <button class="pk-btn pk-btn-outline-gray">Outline Gray</button>
+          <button class="pk-btn pk-btn-ghost">Ghost Primary</button>
+          <button class="pk-btn pk-btn-ghost-gray">Ghost Gray</button>
+          <button class="pk-btn pk-btn-soft">Soft</button>
+          <button class="pk-btn pk-btn-link">Link Button</button>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-6">Sizes</h3>
+        <div class="demo-row pk-items-center">
+          <button class="pk-btn pk-btn-primary pk-btn-xs">XSmall</button>
+          <button class="pk-btn pk-btn-primary pk-btn-sm">Small</button>
+          <button class="pk-btn pk-btn-primary">Default</button>
+          <button class="pk-btn pk-btn-primary pk-btn-lg">Large</button>
+          <button class="pk-btn pk-btn-primary pk-btn-xl">XLarge</button>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-6">Shapes &amp; States</h3>
+        <div class="demo-row">
+          <button class="pk-btn pk-btn-primary pk-btn-pill">Pill</button>
+          <button class="pk-btn pk-btn-outline pk-btn-square">Square</button>
+          <button class="pk-btn pk-btn-primary pk-btn-icon" aria-label="Star">
+            ★
+          </button>
+          <button class="pk-btn pk-btn-primary" disabled>Disabled</button>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-6">Button Group</h3>
+        <div class="demo-row">
+          <div class="pk-btn-group">
+            <button class="pk-btn pk-btn-outline">First</button>
+            <button class="pk-btn pk-btn-outline">Second</button>
+            <button class="pk-btn pk-btn-outline">Third</button>
+          </div>
+          <div class="pk-btn-group">
+            <button class="pk-btn pk-btn-primary">Save</button>
+            <button class="pk-btn pk-btn-secondary" aria-label="More options">▾</button>
+          </div>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-6">Block Button</h3>
+        <button class="pk-btn pk-btn-gradient pk-btn-block pk-btn-lg pk-btn-pill">
+          Full-Width Gradient Button
+        </button>
+      </section>
+
+      <!-- FORMS -->
+      <section class="demo-section" id="forms">
+        <h2 class="section-title">Forms &amp; Inputs</h2>
+        <p class="section-sub">All standard form elements with consistent focus, error, and disabled states.</p>
+
+        <div class="pk-grid pk-grid-cols-2 pk-gap-6">
+          <!-- Text input -->
+          <div class="pk-field">
+            <label class="pk-label">Email address <span class="pk-required"></span></label>
+            <input type="email" class="pk-input" placeholder="hello@example.com" />
+            <span class="pk-hint">We'll never share your email.</span>
+          </div>
+
+          <!-- Password input -->
+          <div class="pk-field">
+            <label class="pk-label">Password</label>
+            <div class="pk-input-wrap">
+              <span class="pk-input-icon-left">🔒</span>
+              <input type="password" class="pk-input pk-input-has-left" placeholder="••••••••" />
+            </div>
+          </div>
+
+          <!-- Select -->
+          <div class="pk-field">
+            <label class="pk-label">Country</label>
+            <select class="pk-input">
+              <option value="">Select country…</option>
+              <option value="de">Germany</option>
+              <option value="at">Austria</option>
+              <option value="ch">Switzerland</option>
+              <option value="us">United States</option>
+            </select>
+          </div>
+
+          <!-- Disabled -->
+          <div class="pk-field">
+            <label class="pk-label">Disabled input</label>
+            <input type="text" class="pk-input" value="Read only value" disabled />
+          </div>
+
+          <!-- Error state -->
+          <div class="pk-field pk-field-error">
+            <label class="pk-label">Username</label>
+            <input type="text" class="pk-input" value="j" />
+            <span class="pk-hint">Username must be at least 3 characters.</span>
+          </div>
+
+          <!-- Input group -->
+          <div class="pk-field">
+            <label class="pk-label">Website</label>
+            <div class="pk-input-group">
+              <span class="pk-input-addon">https://</span>
+              <input type="text" class="pk-input" placeholder="yoursite.com" />
+              <span class="pk-input-addon">.com</span>
+            </div>
+          </div>
+
+          <!-- Textarea -->
+          <div class="pk-field pk-col-span-full">
+            <label class="pk-label">Message</label>
+            <textarea class="pk-input" rows="4" placeholder="Write your message…"></textarea>
+          </div>
+
+          <!-- File input -->
+          <div class="pk-field">
+            <label class="pk-label">Attach file</label>
+            <input type="file" class="pk-file-input" />
+          </div>
+
+          <!-- Range -->
+          <div class="pk-field">
+            <label class="pk-label">Volume</label>
+            <input type="range" class="pk-range" min="0" max="100" value="65" />
+          </div>
+        </div>
+
+        <!-- Checkboxes, radios, toggles -->
+        <h3 class="pk-text-lg pk-font-semibold pk-mt-8 pk-mb-4">Checkboxes, Radios &amp; Toggles</h3>
+        <div class="pk-grid pk-grid-cols-3 pk-gap-4">
+          <div class="pk-stack-sm">
+            <label class="pk-check-group">
+              <input type="checkbox" class="pk-checkbox" checked />
+              <span>Option A</span>
+            </label>
+            <label class="pk-check-group">
+              <input type="checkbox" class="pk-checkbox" />
+              <span>Option B</span>
+            </label>
+            <label class="pk-check-group">
+              <input type="checkbox" class="pk-checkbox" disabled />
+              <span class="pk-muted">Disabled</span>
+            </label>
+          </div>
+          <div class="pk-stack-sm">
+            <label class="pk-check-group">
+              <input type="radio" name="radio-demo" class="pk-radio" checked />
+              <span>Choice One</span>
+            </label>
+            <label class="pk-check-group">
+              <input type="radio" name="radio-demo" class="pk-radio" />
+              <span>Choice Two</span>
+            </label>
+            <label class="pk-check-group">
+              <input type="radio" name="radio-demo" class="pk-radio" disabled />
+              <span class="pk-muted">Disabled</span>
+            </label>
+          </div>
+          <div class="pk-stack-sm">
+            <label class="pk-toggle">
+              <span class="pk-toggle-track">
+                <input type="checkbox" class="pk-toggle-input" checked />
+                <span class="pk-toggle-thumb"></span>
+              </span>
+              <span>Notifications</span>
+            </label>
+            <label class="pk-toggle">
+              <span class="pk-toggle-track">
+                <input type="checkbox" class="pk-toggle-input" />
+                <span class="pk-toggle-thumb"></span>
+              </span>
+              <span>Marketing emails</span>
+            </label>
+            <label class="pk-toggle">
+              <span class="pk-toggle-track" style="opacity:.5">
+                <input type="checkbox" class="pk-toggle-input" disabled />
+                <span class="pk-toggle-thumb"></span>
+              </span>
+              <span class="pk-muted">Disabled</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARDS -->
+      <section class="demo-section" id="cards">
+        <h2 class="section-title">Cards</h2>
+        <p class="section-sub">Flat, raised, hover, glass, dark, and rose variants.</p>
+
+        <div class="pk-auto-grid pk-gap-6">
+          <!-- Default card -->
+          <div class="pk-card">
+            <div class="pk-card-media-fixed"><img src="https://images.unsplash.com/photo-1518655048521-f130df041f66?w=640&q=80" alt="Office" /></div>
+            <div class="pk-card-body">
+              <span class="pk-badge pk-badge-primary pk-mb-2">Design</span>
+              <h3 class="pk-text-lg pk-font-bold pk-mb-2">Default Card</h3>
+              <p class="pk-small pk-muted pk-mb-4">A clean card with header image, badge, and footer actions.</p>
+              <a href="#cards" class="pk-btn pk-btn-primary pk-btn-sm">Read More</a>
+            </div>
+            <div class="pk-card-footer pk-flex pk-justify-between pk-items-center">
+              <span class="pk-xs pk-muted">March 2026</span>
+              <span class="pk-badge pk-badge-solid-gray">5 min read</span>
+            </div>
+          </div>
+
+          <!-- Hover card -->
+          <div class="pk-card pk-card-hover">
+            <div class="pk-card-body">
+              <div class="pk-avatar pk-avatar-lg pk-mb-4" style="background:var(--pk-primary-100)">🚀</div>
+              <h3 class="pk-text-lg pk-font-bold pk-mb-2">Hover Card</h3>
+              <p class="pk-small pk-muted">Hover over me! I lift up with a shadow effect on hover.</p>
+            </div>
+          </div>
+
+          <!-- Rose card -->
+          <div class="pk-card pk-card-rose">
+            <div class="pk-card-header">
+              <h3 class="pk-text-base pk-font-semibold pk-mb-0">Rose Card</h3>
+            </div>
+            <div class="pk-card-body">
+              <p class="pk-small pk-muted pk-mb-4">Uses the subtle rose gradient background.</p>
+              <div class="pk-cluster">
+                <span class="pk-badge pk-badge-primary">Feature 1</span>
+                <span class="pk-badge pk-badge-primary">Feature 2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Glass card (shown on a gradient bg) -->
+          <div class="pk-p-1 pk-rounded-xl pk-bg-gradient-warm">
+            <div class="pk-card pk-card-glass">
+              <div class="pk-card-body">
+                <h3 class="pk-text-lg pk-font-bold pk-mb-2">Glass Card</h3>
+                <p class="pk-small">Frosted glass effect using <code>backdrop-filter: blur</code>.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dark card -->
+          <div class="pk-card pk-card-dark">
+            <div class="pk-card-body">
+              <h3 class="pk-text-lg pk-font-bold pk-mb-2">Dark Card</h3>
+              <p class="pk-small" style="color:rgba(255,255,255,.6)">For dark-themed sections or pricing cards.</p>
+              <button class="pk-btn pk-btn-gradient pk-btn-sm pk-mt-4">Get Started</button>
+            </div>
+          </div>
+
+          <!-- Outline card -->
+          <div class="pk-card pk-card-outline">
+            <div class="pk-card-body">
+              <h3 class="pk-text-lg pk-font-bold pk-mb-2">Outline Card</h3>
+              <p class="pk-small pk-muted">Accented border, no shadow. Great for feature lists.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BADGES & TAGS -->
+      <section class="demo-section" id="badges">
+        <h2 class="section-title">Badges &amp; Tags</h2>
+        <p class="section-sub">Status badges, solid chips, dot indicators, and dismissible tags.</p>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Soft Badges</h3>
+        <div class="demo-row">
+          <span class="pk-badge pk-badge-primary">Primary</span>
+          <span class="pk-badge pk-badge-accent">Accent</span>
+          <span class="pk-badge pk-badge-gray">Gray</span>
+          <span class="pk-badge pk-badge-success">Success</span>
+          <span class="pk-badge pk-badge-warning">Warning</span>
+          <span class="pk-badge pk-badge-error">Error</span>
+          <span class="pk-badge pk-badge-info">Info</span>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-5">Solid Badges</h3>
+        <div class="demo-row">
+          <span class="pk-badge pk-badge-solid-primary">Solid Rose</span>
+          <span class="pk-badge pk-badge-solid-gray">Solid Gray</span>
+          <span class="pk-badge pk-badge-outline">Outline</span>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-5">Dot Indicators</h3>
+        <div class="demo-row">
+          <span class="pk-badge pk-badge-success pk-badge-dot">Online</span>
+          <span class="pk-badge pk-badge-error pk-badge-dot">Offline</span>
+          <span class="pk-badge pk-badge-warning pk-badge-dot">Away</span>
+          <span class="pk-badge pk-badge-info pk-badge-dot">In Call</span>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3 pk-mt-5">Dismissible Tags</h3>
+        <div class="demo-row" id="tag-demo">
+          <span class="pk-tag">CSS <button class="pk-tag-dismiss" onclick="this.parentElement.remove()" aria-label="Remove CSS">✕</button></span>
+          <span class="pk-tag">Design <button class="pk-tag-dismiss" onclick="this.parentElement.remove()" aria-label="Remove Design">✕</button></span>
+          <span class="pk-tag">TypeScript <button class="pk-tag-dismiss" onclick="this.parentElement.remove()" aria-label="Remove TypeScript">✕</button></span>
+          <span class="pk-tag">Accessibility <button class="pk-tag-dismiss" onclick="this.parentElement.remove()" aria-label="Remove Accessibility">✕</button></span>
+        </div>
+      </section>
+
+      <!-- ALERTS -->
+      <section class="demo-section" id="alerts">
+        <h2 class="section-title">Alerts</h2>
+        <p class="section-sub">Inline alerts for feedback. Add <code>data-alert</code> to enable dismiss.</p>
+
+        <div class="pk-stack">
+          <div class="pk-alert pk-alert-info" data-alert>
+            <span class="pk-alert-icon">ℹ️</span>
+            <div class="pk-alert-content">
+              <p class="pk-alert-title">Information</p>
+              Your account settings have been updated.
+            </div>
+            <button class="pk-alert-close" data-alert-close aria-label="Close">✕</button>
+          </div>
+
+          <div class="pk-alert pk-alert-success" data-alert>
+            <span class="pk-alert-icon">✅</span>
+            <div class="pk-alert-content">
+              <p class="pk-alert-title">Success!</p>
+              Your changes have been saved successfully.
+            </div>
+            <button class="pk-alert-close" data-alert-close aria-label="Close">✕</button>
+          </div>
+
+          <div class="pk-alert pk-alert-warning" data-alert>
+            <span class="pk-alert-icon">⚠️</span>
+            <div class="pk-alert-content">
+              <p class="pk-alert-title">Warning</p>
+              Your subscription expires in 5 days. Renew now to avoid interruption.
+            </div>
+            <button class="pk-alert-close" data-alert-close aria-label="Close">✕</button>
+          </div>
+
+          <div class="pk-alert pk-alert-error" data-alert>
+            <span class="pk-alert-icon">🚫</span>
+            <div class="pk-alert-content">
+              <p class="pk-alert-title">Error</p>
+              Something went wrong. Please try again later.
+            </div>
+            <button class="pk-alert-close" data-alert-close aria-label="Close">✕</button>
+          </div>
+
+          <div class="pk-alert pk-alert-primary" data-alert>
+            <span class="pk-alert-icon">🌹</span>
+            <div class="pk-alert-content">
+              <p class="pk-alert-title">PowerKit Update</p>
+              Version 1.0.0 has been released with new components.
+              <a href="#" class="pk-btn pk-btn-link pk-btn-xs pk-mt-2 pk-block">Read the changelog →</a>
+            </div>
+            <button class="pk-alert-close" data-alert-close aria-label="Close">✕</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- NAVIGATION -->
+      <section class="demo-section" id="navigation">
+        <h2 class="section-title">Navigation</h2>
+        <p class="section-sub">Breadcrumbs and pagination components.</p>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Breadcrumbs</h3>
+        <nav aria-label="Breadcrumb">
+          <ol class="pk-breadcrumb pk-mb-6">
+            <li class="pk-breadcrumb-item"><a href="#">Home</a><span class="pk-breadcrumb-sep">/</span></li>
+            <li class="pk-breadcrumb-item"><a href="#">Products</a><span class="pk-breadcrumb-sep">/</span></li>
+            <li class="pk-breadcrumb-item"><span>PowerKit</span></li>
+          </ol>
+        </nav>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Pagination</h3>
+        <nav aria-label="Pagination">
+          <ul class="pk-pagination">
+            <li class="pk-page-item pk-disabled"><a class="pk-page-link" href="#navigation" aria-label="Previous">‹</a></li>
+            <li class="pk-page-item pk-active"><a class="pk-page-link" href="#navigation">1</a></li>
+            <li class="pk-page-item"><a class="pk-page-link" href="#navigation">2</a></li>
+            <li class="pk-page-item"><a class="pk-page-link" href="#navigation">3</a></li>
+            <li class="pk-page-item"><a class="pk-page-link" href="#navigation">…</a></li>
+            <li class="pk-page-item"><a class="pk-page-link" href="#navigation">10</a></li>
+            <li class="pk-page-item"><a class="pk-page-link" href="#navigation" aria-label="Next">›</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- MODALS -->
+      <section class="demo-section" id="modals">
+        <h2 class="section-title">Modals &amp; Drawer</h2>
+        <p class="section-sub">Accessible modals and a side drawer with focus trap, keyboard dismiss, and scroll lock.</p>
+
+        <div class="demo-row">
+          <button class="pk-btn pk-btn-primary" data-modal-open="#demo-modal">Open Modal</button>
+          <button class="pk-btn pk-btn-outline" data-modal-open="#demo-modal-sm">Small Modal</button>
+          <button class="pk-btn pk-btn-secondary" data-modal-open="#demo-drawer">Open Drawer</button>
+        </div>
+
+        <!-- Default modal -->
+        <div class="pk-overlay pk-hidden" id="demo-modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div class="pk-modal">
+            <div class="pk-modal-header">
+              <h2 class="pk-modal-title" id="modal-title">Confirm Action</h2>
+              <button class="pk-modal-close" data-modal-close aria-label="Close">✕</button>
+            </div>
+            <div class="pk-modal-body">
+              <p>Are you sure you want to perform this action? This cannot be undone.</p>
+              <div class="pk-alert pk-alert-warning pk-mt-4">
+                <span class="pk-alert-icon">⚠️</span>
+                <div class="pk-alert-content">This will permanently delete all selected records.</div>
+              </div>
+            </div>
+            <div class="pk-modal-footer">
+              <button class="pk-btn pk-btn-outline-gray" data-modal-close>Cancel</button>
+              <button class="pk-btn pk-btn-danger" data-modal-close>Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small modal -->
+        <div class="pk-overlay pk-hidden" id="demo-modal-sm" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-sm-title">
+          <div class="pk-modal pk-modal-sm">
+            <div class="pk-modal-header">
+              <h2 class="pk-modal-title" id="modal-sm-title">Quick Note</h2>
+              <button class="pk-modal-close" data-modal-close aria-label="Close">✕</button>
+            </div>
+            <div class="pk-modal-body">
+              <div class="pk-field">
+                <label class="pk-label">Note text</label>
+                <textarea class="pk-input" rows="3" placeholder="Write something…"></textarea>
+              </div>
+            </div>
+            <div class="pk-modal-footer">
+              <button class="pk-btn pk-btn-primary pk-btn-block" data-modal-close>Save Note</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drawer -->
+        <div class="pk-overlay pk-hidden" id="demo-drawer" data-modal role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+          <div class="pk-drawer">
+            <div class="pk-drawer-header">
+              <h2 class="pk-modal-title" id="drawer-title">Settings</h2>
+              <button class="pk-modal-close" data-modal-close aria-label="Close">✕</button>
+            </div>
+            <div class="pk-drawer-body pk-stack">
+              <div class="pk-field">
+                <label class="pk-label">Display name</label>
+                <input type="text" class="pk-input" value="Leander K." />
+              </div>
+              <div class="pk-field">
+                <label class="pk-label">Theme</label>
+                <select class="pk-input">
+                  <option>Light</option>
+                  <option>Dark</option>
+                  <option>System</option>
+                </select>
+              </div>
+              <label class="pk-toggle pk-mt-2">
+                <span class="pk-toggle-track">
+                  <input type="checkbox" class="pk-toggle-input" checked />
+                  <span class="pk-toggle-thumb"></span>
+                </span>
+                <span>Email notifications</span>
+              </label>
+              <button class="pk-btn pk-btn-primary pk-btn-block pk-mt-4" data-modal-close>Save Settings</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DROPDOWNS -->
+      <section class="demo-section" id="dropdown">
+        <h2 class="section-title">Dropdowns</h2>
+        <p class="section-sub">Click-activated menus with dividers, headers, and danger items.</p>
+
+        <div class="demo-row">
+          <div class="pk-dropdown">
+            <button class="pk-btn pk-btn-primary" data-dropdown-toggle="#dd1" aria-haspopup="true" aria-expanded="false">
+              Actions ▾
+            </button>
+            <div class="pk-dropdown-menu pk-hidden" id="dd1">
+              <span class="pk-dropdown-header">Account</span>
+              <a href="#dropdown" class="pk-dropdown-item">👤 Profile</a>
+              <a href="#dropdown" class="pk-dropdown-item">⚙️ Settings</a>
+              <a href="#dropdown" class="pk-dropdown-item">📊 Dashboard</a>
+              <div class="pk-dropdown-divider"></div>
+              <a href="#dropdown" class="pk-dropdown-item pk-danger">🗑️ Delete account</a>
+            </div>
+          </div>
+
+          <div class="pk-dropdown">
+            <button class="pk-btn pk-btn-outline" data-dropdown-toggle="#dd2" aria-haspopup="true" aria-expanded="false">
+              Sort by ▾
+            </button>
+            <div class="pk-dropdown-menu pk-hidden" id="dd2">
+              <a href="#dropdown" class="pk-dropdown-item">↑ Newest first</a>
+              <a href="#dropdown" class="pk-dropdown-item">↓ Oldest first</a>
+              <a href="#dropdown" class="pk-dropdown-item">A-Z Name</a>
+              <a href="#dropdown" class="pk-dropdown-item">⭐ Rating</a>
+            </div>
+          </div>
+
+          <div class="pk-dropdown">
+            <button class="pk-btn pk-btn-ghost-gray pk-btn-icon" data-dropdown-toggle="#dd3" aria-haspopup="true" aria-expanded="false" aria-label="More options">
+              ⋯
+            </button>
+            <div class="pk-dropdown-menu pk-right pk-hidden" id="dd3">
+              <a href="#dropdown" class="pk-dropdown-item">✏️ Edit</a>
+              <a href="#dropdown" class="pk-dropdown-item">📋 Duplicate</a>
+              <a href="#dropdown" class="pk-dropdown-item">📤 Export</a>
+              <div class="pk-dropdown-divider"></div>
+              <a href="#dropdown" class="pk-dropdown-item pk-danger">🗑️ Delete</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TABS -->
+      <section class="demo-section" id="tabs">
+        <h2 class="section-title">Tabs</h2>
+        <p class="section-sub">Underline tabs and pill/segmented tabs with keyboard arrow-key navigation.</p>
+
+        <!-- Underline tabs -->
+        <div class="pk-tabs pk-mb-8" data-tabs>
+          <div class="pk-tab-list" role="tablist">
+            <button class="pk-tab-btn pk-active" data-tab="overview" role="tab" aria-selected="true">Overview</button>
+            <button class="pk-tab-btn" data-tab="features" role="tab" aria-selected="false">Features</button>
+            <button class="pk-tab-btn" data-tab="pricing"  role="tab" aria-selected="false">Pricing</button>
+            <button class="pk-tab-btn" data-tab="faq"      role="tab" aria-selected="false">FAQ</button>
+          </div>
+          <div class="pk-tab-panel" id="overview" role="tabpanel">
+            <p>Welcome to the <strong>Overview</strong> tab. PowerKit gives you a complete UI toolkit that's ready to use out of the box — no build step required.</p>
+          </div>
+          <div class="pk-tab-panel pk-hidden" id="features" role="tabpanel">
+            <ul>
+              <li>25+ utility classes for layout, spacing, and typography</li>
+              <li>12+ pre-built components: buttons, cards, modals, toasts, and more</li>
+              <li>Dark mode with both automatic and manual control</li>
+              <li>Accessible: focus management, ARIA attributes, keyboard navigation</li>
+            </ul>
+          </div>
+          <div class="pk-tab-panel pk-hidden" id="pricing" role="tabpanel">
+            <p>PowerKit is <strong>completely free</strong> and open-source under the MIT license. No premium tiers, no paywalls.</p>
+          </div>
+          <div class="pk-tab-panel pk-hidden" id="faq" role="tabpanel">
+            <p>Have questions? Open an issue on <a href="https://github.com/LeanderKafemann/PowerKit-">GitHub</a>.</p>
+          </div>
+        </div>
+
+        <!-- Pill tabs -->
+        <div class="pk-tabs" data-tabs>
+          <div class="pk-tab-list pk-tab-list-pills" role="tablist">
+            <button class="pk-tab-btn pk-active" data-tab="pill-a" role="tab" aria-selected="true">Daily</button>
+            <button class="pk-tab-btn" data-tab="pill-b" role="tab" aria-selected="false">Weekly</button>
+            <button class="pk-tab-btn" data-tab="pill-c" role="tab" aria-selected="false">Monthly</button>
+          </div>
+          <div class="pk-tab-panel" id="pill-a" role="tabpanel"><p class="pk-mt-4 pk-small pk-muted">Showing daily statistics.</p></div>
+          <div class="pk-tab-panel pk-hidden" id="pill-b" role="tabpanel"><p class="pk-mt-4 pk-small pk-muted">Showing weekly statistics.</p></div>
+          <div class="pk-tab-panel pk-hidden" id="pill-c" role="tabpanel"><p class="pk-mt-4 pk-small pk-muted">Showing monthly statistics.</p></div>
+        </div>
+      </section>
+
+      <!-- ACCORDION -->
+      <section class="demo-section" id="accordion">
+        <h2 class="section-title">Accordion</h2>
+        <p class="section-sub">Add <code>data-accordion="multiple"</code> to allow multiple panels open at once.</p>
+
+        <div class="pk-accordion" data-accordion>
+          <div class="pk-accordion-item">
+            <button class="pk-accordion-trigger" aria-expanded="false">
+              What is PowerKit?
+              <svg class="pk-accordion-icon" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="pk-accordion-content">
+              <div class="pk-accordion-body">
+                PowerKit is a modern, lightweight CSS &amp; JS styling kit inspired by professional office aesthetics and a warm rose colour palette.
+              </div>
+            </div>
+          </div>
+
+          <div class="pk-accordion-item">
+            <button class="pk-accordion-trigger" aria-expanded="false">
+              Do I need a build step?
+              <svg class="pk-accordion-icon" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="pk-accordion-content">
+              <div class="pk-accordion-body">
+                No. Just link <code>powerkit.css</code> and <code>powerkit.js</code> in your HTML and you're done.
+              </div>
+            </div>
+          </div>
+
+          <div class="pk-accordion-item">
+            <button class="pk-accordion-trigger" aria-expanded="false">
+              Is dark mode supported?
+              <svg class="pk-accordion-icon" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="pk-accordion-content">
+              <div class="pk-accordion-body">
+                Yes — PowerKit supports both automatic dark mode via <code>prefers-color-scheme</code> and manual switching with the <code>.pk-dark</code> class or the built-in theme toggle JavaScript API.
+              </div>
+            </div>
+          </div>
+
+          <div class="pk-accordion-item">
+            <button class="pk-accordion-trigger" aria-expanded="false">
+              Can I customise the colours?
+              <svg class="pk-accordion-icon" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="pk-accordion-content">
+              <div class="pk-accordion-body">
+                Absolutely. Override the CSS custom properties in your own stylesheet. For example: <code>:root { --pk-primary-500: #7c3aed; }</code> instantly repaints every component.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TABLES -->
+      <section class="demo-section" id="tables">
+        <h2 class="section-title">Tables</h2>
+        <p class="section-sub">Responsive scrollable tables with striped and hover variants.</p>
+
+        <div class="pk-table-wrap">
+          <table class="pk-table pk-table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="pk-flex pk-items-center pk-gap-3">
+                    <div class="pk-avatar pk-avatar-sm">LK</div>
+                    <div>
+                      <p class="pk-font-medium pk-mb-0">Leander K.</p>
+                      <p class="pk-xs pk-muted pk-mb-0">l.kafemann@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="pk-badge pk-badge-primary">Admin</span></td>
+                <td><span class="pk-badge pk-badge-success pk-badge-dot">Active</span></td>
+                <td class="pk-muted pk-small">Jan 2024</td>
+                <td>
+                  <div class="pk-flex pk-gap-2">
+                    <button class="pk-btn pk-btn-ghost-gray pk-btn-xs">Edit</button>
+                    <button class="pk-btn pk-btn-outline pk-btn-xs" style="color:var(--pk-error);border-color:var(--pk-error-light)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="pk-flex pk-items-center pk-gap-3">
+                    <div class="pk-avatar pk-avatar-sm" style="background:var(--pk-info-light);color:var(--pk-info-dark)">MH</div>
+                    <div>
+                      <p class="pk-font-medium pk-mb-0">Mia H.</p>
+                      <p class="pk-xs pk-muted pk-mb-0">mia.h@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="pk-badge pk-badge-info">Editor</span></td>
+                <td><span class="pk-badge pk-badge-warning pk-badge-dot">Away</span></td>
+                <td class="pk-muted pk-small">Mar 2024</td>
+                <td>
+                  <div class="pk-flex pk-gap-2">
+                    <button class="pk-btn pk-btn-ghost-gray pk-btn-xs">Edit</button>
+                    <button class="pk-btn pk-btn-outline pk-btn-xs" style="color:var(--pk-error);border-color:var(--pk-error-light)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="pk-flex pk-items-center pk-gap-3">
+                    <div class="pk-avatar pk-avatar-sm" style="background:var(--pk-success-light);color:var(--pk-success-dark)">JD</div>
+                    <div>
+                      <p class="pk-font-medium pk-mb-0">Jan D.</p>
+                      <p class="pk-xs pk-muted pk-mb-0">jan.d@example.com</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="pk-badge pk-badge-gray">Viewer</span></td>
+                <td><span class="pk-badge pk-badge-error pk-badge-dot">Offline</span></td>
+                <td class="pk-muted pk-small">Sep 2024</td>
+                <td>
+                  <div class="pk-flex pk-gap-2">
+                    <button class="pk-btn pk-btn-ghost-gray pk-btn-xs">Edit</button>
+                    <button class="pk-btn pk-btn-outline pk-btn-xs" style="color:var(--pk-error);border-color:var(--pk-error-light)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PROGRESS & LOADERS -->
+      <section class="demo-section" id="progress">
+        <h2 class="section-title">Progress &amp; Loaders</h2>
+        <p class="section-sub">Progress bars, spinners, dot loaders, and skeleton screens.</p>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Progress Bars</h3>
+        <div class="pk-stack pk-mb-8">
+          <div class="pk-progress"><div class="pk-progress-bar" style="width:75%"></div></div>
+          <div class="pk-progress pk-progress-success"><div class="pk-progress-bar" style="width:60%"></div></div>
+          <div class="pk-progress pk-progress-warning"><div class="pk-progress-bar" style="width:45%"></div></div>
+          <div class="pk-progress pk-progress-error"><div class="pk-progress-bar" style="width:30%"></div></div>
+          <div class="pk-progress pk-progress-lg"><div class="pk-progress-bar pk-progress-bar-striped" style="width:55%"></div></div>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Spinners</h3>
+        <div class="demo-row pk-items-center pk-mb-8">
+          <span class="pk-spinner pk-spinner-sm"></span>
+          <span class="pk-spinner"></span>
+          <span class="pk-spinner pk-spinner-lg"></span>
+          <span class="pk-spinner pk-spinner-xl"></span>
+          <span class="pk-dots"><span></span><span></span><span></span></span>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Skeleton</h3>
+        <div class="pk-card pk-p-6 pk-border pk-mb-2" style="max-width:360px">
+          <div class="pk-flex pk-gap-3 pk-items-center pk-mb-4">
+            <div class="pk-skeleton pk-skeleton-circle" style="width:3rem;height:3rem"></div>
+            <div class="pk-flex-1">
+              <div class="pk-skeleton pk-skeleton-text" style="width:60%"></div>
+              <div class="pk-skeleton pk-skeleton-text pk-xs" style="width:40%"></div>
+            </div>
+          </div>
+          <div class="pk-skeleton pk-skeleton-text"></div>
+          <div class="pk-skeleton pk-skeleton-text"></div>
+          <div class="pk-skeleton pk-skeleton-text" style="width:70%"></div>
+          <div class="pk-skeleton pk-skeleton-btn pk-mt-4"></div>
+        </div>
+      </section>
+
+      <!-- AVATARS -->
+      <section class="demo-section" id="avatars">
+        <h2 class="section-title">Avatars</h2>
+        <p class="section-sub">Sizes, shapes, status indicators, and avatar groups.</p>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Sizes</h3>
+        <div class="demo-row pk-items-end pk-mb-6">
+          <div class="pk-avatar pk-avatar-xs">XS</div>
+          <div class="pk-avatar pk-avatar-sm">SM</div>
+          <div class="pk-avatar">MD</div>
+          <div class="pk-avatar pk-avatar-lg">LG</div>
+          <div class="pk-avatar pk-avatar-xl">XL</div>
+          <div class="pk-avatar pk-avatar-2xl">2X</div>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">With Status</h3>
+        <div class="demo-row pk-mb-6">
+          <div class="pk-avatar-wrap">
+            <div class="pk-avatar pk-avatar-lg">LK</div>
+            <span class="pk-avatar-status pk-status-online"></span>
+          </div>
+          <div class="pk-avatar-wrap">
+            <div class="pk-avatar pk-avatar-lg" style="background:var(--pk-info-light);color:var(--pk-info-dark)">MH</div>
+            <span class="pk-avatar-status pk-status-away"></span>
+          </div>
+          <div class="pk-avatar-wrap">
+            <div class="pk-avatar pk-avatar-lg" style="background:var(--pk-gray-200);color:var(--pk-gray-600)">JD</div>
+            <span class="pk-avatar-status pk-status-offline"></span>
+          </div>
+          <div class="pk-avatar-wrap">
+            <div class="pk-avatar pk-avatar-lg pk-avatar-square" style="background:var(--pk-error-light);color:var(--pk-error-dark)">TR</div>
+            <span class="pk-avatar-status pk-status-busy"></span>
+          </div>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Avatar Group</h3>
+        <div class="pk-avatar-group">
+          <div class="pk-avatar">A</div>
+          <div class="pk-avatar" style="background:var(--pk-info-light);color:var(--pk-info-dark)">B</div>
+          <div class="pk-avatar" style="background:var(--pk-success-light);color:var(--pk-success-dark)">C</div>
+          <div class="pk-avatar" style="background:var(--pk-accent-100);color:var(--pk-accent-700)">D</div>
+          <div class="pk-avatar pk-bg-gray pk-text-primary" style="font-size:.7rem">+8</div>
+        </div>
+      </section>
+
+      <!-- TOASTS -->
+      <section class="demo-section" id="toasts">
+        <h2 class="section-title">Toasts</h2>
+        <p class="section-sub">Triggered programmatically. They appear in the bottom-right corner.</p>
+
+        <div class="demo-row">
+          <button class="pk-btn pk-btn-success" onclick="PowerKit.toast.show({message:'Changes saved successfully!', type:'success'})">
+            ✅ Success Toast
+          </button>
+          <button class="pk-btn pk-btn-danger" onclick="PowerKit.toast.show({message:'An error occurred. Please retry.', type:'error'})">
+            🚫 Error Toast
+          </button>
+          <button class="pk-btn pk-btn-accent" onclick="PowerKit.toast.show({message:'Low disk space — clean up now.', type:'warning'})">
+            ⚠️ Warning Toast
+          </button>
+          <button class="pk-btn pk-btn-outline" onclick="PowerKit.toast.show({message:'New update available. Reload to apply.', type:'info'})">
+            ℹ️ Info Toast
+          </button>
+          <button class="pk-btn pk-btn-ghost-gray" onclick="PowerKit.toast.show({message:'This toast stays until dismissed.', duration:0})">
+            📌 Persistent
+          </button>
+        </div>
+      </section>
+
+      <!-- MISC -->
+      <section class="demo-section" id="misc">
+        <h2 class="section-title">Misc</h2>
+        <p class="section-sub">Dividers, tooltips, code blocks, and background patterns.</p>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Dividers</h3>
+        <div class="pk-divider pk-mb-6">or continue with</div>
+        <div class="pk-divider pk-divider-rose pk-mb-8">section separator</div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Tooltips (hover me)</h3>
+        <div class="demo-row pk-mb-8">
+          <span class="pk-tooltip" data-tip="This is a tooltip!">
+            <button class="pk-btn pk-btn-outline">Hover me</button>
+          </span>
+          <span class="pk-tooltip" data-tip="Keyboard shortcut: Ctrl+S">
+            <kbd>Save</kbd>
+          </span>
+          <span class="pk-tooltip" data-tip="Powered by CSS only">
+            <span class="pk-badge pk-badge-primary">CSS Tooltip</span>
+          </span>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Gradient Backgrounds</h3>
+        <div class="pk-grid pk-grid-cols-3 pk-gap-4 pk-mb-8">
+          <div class="pk-rounded-xl pk-p-6 pk-bg-gradient-rose pk-text-center" style="color:#fff">
+            <p class="pk-font-semibold pk-mb-0">Rose</p>
+          </div>
+          <div class="pk-rounded-xl pk-p-6 pk-bg-gradient-warm pk-text-center" style="color:#fff">
+            <p class="pk-font-semibold pk-mb-0">Warm</p>
+          </div>
+          <div class="pk-rounded-xl pk-p-6 pk-bg-gradient-dark pk-text-center" style="color:#fff">
+            <p class="pk-font-semibold pk-mb-0">Dark</p>
+          </div>
+        </div>
+
+        <h3 class="pk-text-base pk-font-semibold pk-mb-3">Code Block</h3>
+        <pre class="pk-pre"><code>&lt;button class="pk-btn pk-btn-gradient pk-btn-pill"&gt;
+  Get Started
+&lt;/button&gt;</code></pre>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ======================================================
+       FOOTER
+  ======================================================= -->
+  <footer class="pk-border-t pk-bg-muted pk-py-12">
+    <div class="pk-container pk-text-center">
+      <div class="pk-flex pk-justify-center pk-items-center pk-gap-2 pk-mb-4">
+        <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="url(#foot-grad)"/>
+          <path d="M8 20V8h5.5a4.5 4.5 0 010 9H8" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 17l5 3" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="foot-grad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f43f5e"/><stop offset="1" stop-color="#be123c"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <strong class="pk-text-lg">PowerKit</strong>
+      </div>
+      <p class="pk-small pk-muted pk-mb-4">
+        An open-source modern web styling kit.<br/>
+        Inspired by BueroWebKit &amp; RosaKi.
+      </p>
+      <div class="pk-cluster pk-justify-center pk-mb-4">
+        <span class="pk-badge pk-badge-gray">MIT License</span>
+        <span class="pk-badge pk-badge-gray">v1.0.0</span>
+        <span class="pk-badge pk-badge-primary">Made with 🌹</span>
+      </div>
+      <p class="pk-xs pk-muted">
+        &copy; 2026 <a href="https://github.com/LeanderKafemann" target="_blank" rel="noopener noreferrer">LeanderKafemann</a>.
+        All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="powerkit.js"></script>
+</body>
+</html>
