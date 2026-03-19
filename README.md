@@ -4,6 +4,8 @@
 
 > Drop in two files. Style anything. Zero dependencies.
 
+🌐 **Live demo & docs:** [leanderkafemann.github.io/PowerKit](https://leanderkafemann.github.io/PowerKit)
+
 ---
 
 ## ✨ Features
@@ -31,21 +33,102 @@
 
 ## 🚀 Quick Start
 
-### Option A – Direct link (simplest)
+### Option A – GitHub Pages (recommended, always up-to-date)
+
+The easiest way to embed PowerKit without downloading anything is to load the files directly from the hosted GitHub Pages URL:
 
 ```html
-<!-- In <head> -->
-<link rel="stylesheet" href="powerkit.css" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My App</title>
 
-<!-- Before </body> -->
+  <!-- 1. PowerKit core styles -->
+  <link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit.css" />
+
+  <!-- 2. Optional: choose one colour theme (see Themes section below) -->
+  <!-- <link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit-blue.css" /> -->
+  <!-- <link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit-pro.css" /> -->
+</head>
+<body>
+
+  <button class="pk-btn pk-btn-primary">Hello PowerKit 👋</button>
+
+  <!-- 3. PowerKit interactive components -->
+  <script src="https://leanderkafemann.github.io/PowerKit/powerkit.js"></script>
+</body>
+</html>
+```
+
+> **Tip:** The GitHub Pages URL always reflects the latest `main` branch.  
+> For a version-locked copy, download the files directly from the [releases page](https://github.com/LeanderKafemann/PowerKit/releases).
+
+### Option B – Self-hosted (download & host yourself)
+
+Download `powerkit.css`, the desired theme file (optional), and `powerkit.js` from the repository, then reference them locally:
+
+```html
+<link rel="stylesheet" href="powerkit.css" />
+<!-- optional theme -->
+<link rel="stylesheet" href="powerkit-blue.css" />
+
 <script src="powerkit.js"></script>
 ```
 
-### Option B – CDN *(coming soon)*
+---
+
+## 🎨 Colour Themes
+
+PowerKit ships with three ready-made colour themes. All themes are **drop-in CSS overrides** — just add one `<link>` tag after `powerkit.css` and everything updates automatically. No build step required.
+
+| File | Colour | Best for |
+|---|---|---|
+| *(default)* | 🌹 Rose + Gold | Warm, creative, consumer products |
+| `powerkit-blue.css` | 🔵 Blue + Cyan | Apps, dashboards, SaaS, tech |
+| `powerkit-pro.css` | 🖤 Charcoal + Glass | Corporate, professional, B2B |
+
+### Rose (default — no extra file needed)
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/LeanderKafemann/PowerKit-/powerkit.css" />
-<script src="https://cdn.jsdelivr.net/gh/LeanderKafemann/PowerKit-/powerkit.js"></script>
+<link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit.css" />
+```
+
+### Blue
+
+```html
+<link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit.css" />
+<link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit-blue.css" />
+```
+
+### Professional (Black · White · Glass)
+
+```html
+<link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit.css" />
+<link rel="stylesheet" href="https://leanderkafemann.github.io/PowerKit/powerkit-pro.css" />
+```
+
+The Professional theme also provides an extra utility class `.pk-glass` for applying a frosted-glass effect to any element:
+
+```html
+<div class="pk-glass" style="padding: 2rem; border-radius: 1rem;">
+  Glassmorphism card
+</div>
+```
+
+### Custom colours
+
+You can also override any design token directly in your own CSS without using a theme file:
+
+```css
+:root {
+  --pk-primary-500: #7c3aed; /* violet */
+  --pk-primary-600: #6d28d9;
+  --pk-primary-700: #5b21b6;
+  --pk-bg-subtle:   #f5f3ff;
+  --pk-shadow-rose: 0 4px 14px 0 rgba(124, 58, 237, 0.35);
+}
 ```
 
 ---
@@ -128,30 +211,17 @@ PowerKit.theme.toggle();        // flip current
 PowerKit.theme.getCurrent();    // → 'dark' | 'light'
 ```
 
-### CSS Variable Overrides
-
-Override any design token in your own stylesheet:
-
-```css
-:root {
-  /* Change primary colour to violet */
-  --pk-primary-500: #7c3aed;
-  --pk-primary-600: #6d28d9;
-
-  /* Change border radius to sharper corners */
-  --pk-radius: 0.25rem;
-}
-```
-
 ---
 
 ## 🗂 File Structure
 
 ```
-PowerKit-/
-├── powerkit.css     ← Core stylesheet (design tokens + all components)
-├── powerkit.js      ← Interactive components (modals, tabs, toasts…)
-├── index.html       ← Live demo & documentation
+PowerKit/
+├── powerkit.css         ← Core stylesheet (design tokens + all components)
+├── powerkit-blue.css    ← Blue colour theme override
+├── powerkit-pro.css     ← Professional (charcoal/glass) theme override
+├── powerkit.js          ← Interactive components (modals, tabs, toasts…)
+├── index.html           ← Live demo & documentation
 └── README.md
 ```
 

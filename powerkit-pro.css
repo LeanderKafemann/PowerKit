@@ -1,0 +1,109 @@
+/*
+ * PowerKit – Professional Theme (Black · White · Glass)
+ * A monochromatic, glass-morphism inspired theme for a clean,
+ * corporate look. Overrides primary and accent colour palettes
+ * and enhances glass-effect components.
+ * Load this file AFTER powerkit.css:
+ *
+ *   <link rel="stylesheet" href="powerkit.css" />
+ *   <link rel="stylesheet" href="powerkit-pro.css" />
+ */
+
+:root {
+  /* --- Primary (Charcoal / Near-Black) --- */
+  --pk-primary-50:  #f8fafc;
+  --pk-primary-100: #f1f5f9;
+  --pk-primary-200: #e2e8f0;
+  --pk-primary-300: #cbd5e1;
+  --pk-primary-400: #94a3b8;
+  --pk-primary-500: #475569;
+  --pk-primary-600: #334155;
+  --pk-primary-700: #1e293b;
+  --pk-primary-800: #0f172a;
+  --pk-primary-900: #0a0f1e;
+  --pk-primary-950: #020617;
+
+  /* --- Accent (Silver / Cool-Gray) --- */
+  --pk-accent-50:  #f9fafb;
+  --pk-accent-100: #f3f4f6;
+  --pk-accent-200: #e5e7eb;
+  --pk-accent-300: #d1d5db;
+  --pk-accent-400: #9ca3af;
+  --pk-accent-500: #6b7280;
+  --pk-accent-600: #4b5563;
+  --pk-accent-700: #374151;
+  --pk-accent-800: #1f2937;
+  --pk-accent-900: #111827;
+
+  /* --- Surface tint (pure white) --- */
+  --pk-bg-subtle: #f8fafc;
+
+  /* --- Text --- */
+  --pk-text-primary:    var(--pk-primary-700);
+  --pk-text-link:       var(--pk-primary-700);
+  --pk-text-link-hover: var(--pk-primary-900);
+
+  /* --- Focus ring --- */
+  --pk-border-focus: var(--pk-primary-600);
+
+  /* --- Brand shadow (overrides --pk-shadow-rose from powerkit.css with a neutral glow) --- */
+  --pk-shadow-rose: 0 4px 14px 0 rgba(15, 23, 42, 0.2);
+
+  /* --- Slightly sharper corners for a more structured feel --- */
+  --pk-radius:    0.375rem;
+  --pk-radius-md: 0.5rem;
+  --pk-radius-lg: 0.75rem;
+}
+
+/* -------------------------------------------------------
+   Enhanced glass-morphism card
+   ------------------------------------------------------- */
+.pk-card-glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* -------------------------------------------------------
+   Glassmorphism utility class (apply to any element)
+   ------------------------------------------------------- */
+.pk-glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Dark-mode glass adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pk-bg-subtle:    #0f172a;
+    --pk-border-focus: var(--pk-primary-400);
+  }
+
+  .pk-card-glass,
+  .pk-glass {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+}
+
+.pk-dark {
+  --pk-bg-subtle:    #0f172a;
+  --pk-border-focus: var(--pk-primary-400);
+}
+
+.pk-dark .pk-card-glass,
+.pk-dark .pk-glass {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}

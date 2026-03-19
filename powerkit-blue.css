@@ -1,0 +1,62 @@
+/*
+ * PowerKit – Blue Theme
+ * Overrides the primary colour palette from Rose to Blue.
+ * Load this file AFTER powerkit.css:
+ *
+ *   <link rel="stylesheet" href="powerkit.css" />
+ *   <link rel="stylesheet" href="powerkit-blue.css" />
+ */
+
+:root {
+  /* --- Primary (Blue) --- */
+  --pk-primary-50:  #eff6ff;
+  --pk-primary-100: #dbeafe;
+  --pk-primary-200: #bfdbfe;
+  --pk-primary-300: #93c5fd;
+  --pk-primary-400: #60a5fa;
+  --pk-primary-500: #3b82f6;
+  --pk-primary-600: #2563eb;
+  --pk-primary-700: #1d4ed8;
+  --pk-primary-800: #1e40af;
+  --pk-primary-900: #1e3a8a;
+  --pk-primary-950: #172554;
+
+  /* --- Accent (Cyan / Sky) --- */
+  --pk-accent-50:  #ecfeff;
+  --pk-accent-100: #cffafe;
+  --pk-accent-200: #a5f3fc;
+  --pk-accent-300: #67e8f9;
+  --pk-accent-400: #22d3ee;
+  --pk-accent-500: #06b6d4;
+  --pk-accent-600: #0891b2;
+  --pk-accent-700: #0e7490;
+  --pk-accent-800: #155e75;
+  --pk-accent-900: #164e63;
+
+  /* --- Surface tint --- */
+  --pk-bg-subtle: #eff6ff;
+
+  /* --- Text links --- */
+  --pk-text-primary:     var(--pk-primary-600);
+  --pk-text-link:        var(--pk-primary-600);
+  --pk-text-link-hover:  var(--pk-primary-700);
+
+  /* --- Focus ring --- */
+  --pk-border-focus: var(--pk-primary-500);
+
+  /* --- Brand shadow (replaces rose glow) --- */
+  --pk-shadow-rose: 0 4px 14px 0 rgba(59, 130, 246, 0.35);
+}
+
+/* Dark-mode surface tint */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pk-bg-subtle:    #0e1e3d;
+    --pk-border-focus: var(--pk-primary-400);
+  }
+}
+
+.pk-dark {
+  --pk-bg-subtle:    #0e1e3d;
+  --pk-border-focus: var(--pk-primary-400);
+}
